@@ -4,6 +4,8 @@
 import json
 import re
 import web
+import sys
+sys.path.append("/home/www/ShortURL/shorturl")
 from libs.qrcode import QRCode, ErrorCorrectLevel
 import settings
 import models
@@ -92,7 +94,7 @@ class Shorten(object):
 
         url = self.add_scheme(url)
         if debug:
-            print repr(url)
+            print(repr(url))
 
         # 判断是否已存在相应的数据
         exists = self.db.exist_expand(url)
@@ -130,7 +132,7 @@ class Expand(object):
 
         expand = self.get_expand(shorten)
         if debug:
-            print repr(expand)
+            print(repr(expand))
         if expand:
             return web.redirect(expand)  # 301 跳转
         else:
@@ -146,7 +148,7 @@ class Expand(object):
             expand = self.get_expand(shorten)
 
             if debug:
-                print repr(expand)
+                print(repr(expand))
             if expand:
                 shorten = web.ctx.homedomain + '/' + shorten
                 return json.dumps({'shorten': shorten, 'expand': expand})
