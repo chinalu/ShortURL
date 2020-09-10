@@ -89,6 +89,9 @@ class Shorten(object):
 
     def POST(self, get_json=False):
         url = web.input(url='').url.strip()
+        auth_token = web.input(auth='').strip()
+        print(settings.AUTH_TOKEN)
+        print(auth_token)
         if not url:
             return web.badrequest()
 
