@@ -139,7 +139,7 @@ class Expand(object):
         if expand:
             return web.redirect(expand)  # 301 跳转
         else:
-            return web.index()
+            return web.notfound()
 
     def POST(self):
         """解析短网址，返回 json 数据"""
